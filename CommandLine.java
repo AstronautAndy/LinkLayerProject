@@ -16,9 +16,11 @@ public class CommandLine extends Thread
         Scanner sc = new Scanner(System.in);
         String command;
         while(sc.hasNextLine() ){ //Read in code one line at a time from the console
-            command = sc.nextLine();
+            command = sc.next();
             switch(command) {
                 case "PRINT": System.out.println("Printing"); break;
+                case "MSG": break;
+                case "CHANGE": break;
                 default: System.out.println("COmmand not recognized");
             }
         }

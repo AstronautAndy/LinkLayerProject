@@ -9,7 +9,7 @@ public class Run
 {
    
     public static void main(String [] args){
-        Router r = new Router();
+        Router r = new Router("test",true);
         CommandLine cl = new CommandLine(r); 
         cl.start();
     }

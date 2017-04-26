@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Router()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Router\r\n
+comment0.params=fileName\ router
+comment0.target=Router(java.lang.String,\ java.lang.Boolean)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Router.\ Needs\ to\ read\ the\ file\ with\ the\ name\ given\ as\ a\ parameter\ \r\n
 numComments=1
