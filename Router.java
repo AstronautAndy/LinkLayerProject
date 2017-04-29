@@ -18,8 +18,8 @@ public class Router
     InputStream inputStream;
     DataOutputStream outputStream;
 
-	Map<InetAddress,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
-	Map<InetAddress,Connection> neighbors; //Contains a map of IP addresses neighboring the localhost and their associated connection
+	Map<Connection,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
+	//Map<Connection,Connection> neighbors; //Contains a map of IP addresses neighboring the localhost and their associated connection
 
     /**
      * Constructor for objects of class Router. Needs to read the file with the name given as a parameter 
