@@ -53,6 +53,7 @@ public class Router
                     newConnection.createForeignSocket(ip);
                     newConnection.setWeight( Integer.parseInt(sc.next() ) ); 
                 }
+                distanceVector.put( newConnection,newConnection.getWeight() );
             }
             
         }catch(Exception ex){

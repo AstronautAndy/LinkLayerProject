@@ -77,4 +77,8 @@ public class Connection
     public void setWeight(int i){
         weight = i;
     }
+    
+    public int getWeight(){
+        return weight;
+    }
 }
