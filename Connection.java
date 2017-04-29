@@ -13,6 +13,7 @@ public class Connection
 {
     private InetAddress ipAddress;
     private int SocketNum;
+    private int weight;
     private Socket connectionSocket;
     private InputStream inputStream;
     private DataOutputStream outputStream;
@@ -20,9 +21,9 @@ public class Connection
     /**
      * Constructor for objects of class Connection
      */
-    public Connection(int SocketNum)
+    public Connection()
     {
-        this.SocketNum = SocketNum;
+        
     }
 
     public void createForeignSocket(InetAddress i){
@@ -58,7 +59,6 @@ public class Connection
          byte[] bytesRecieved = null;
         try
         {
-            
             byte[] bytes = new byte[1024];
             int numBytes = inputStream.read(bytes);
             if ( numBytes > 0)
@@ -67,7 +67,14 @@ public class Connection
                 System.arraycopy(bytes, 0, bytesRecieved, 0, numBytes );
             }
         } catch (IOException e) {}
-
         return bytesRecieved;
+    }
+    
+    public void setSocket(int i){
+        SocketNum = i;
+    }
+    
+    public void setWeight(int i){
+        weight = i;
     }
 }

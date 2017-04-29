@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=SocketNum
-comment0.target=Connection(int)
+comment0.params=
+comment0.target=Connection()
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Connection\r\n
 comment1.params=i
 comment1.target=void\ createForeignSocket(java.net.InetAddress)
@@ -10,4 +10,8 @@ comment3.params=payload
 comment3.target=void\ send(byte[])
 comment4.params=
 comment4.target=byte[]\ receive()
-numComments=5
+comment5.params=i
+comment5.target=void\ setSocket(int)
+comment6.params=i
+comment6.target=void\ setWeight(int)
+numComments=7

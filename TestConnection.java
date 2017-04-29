@@ -7,7 +7,10 @@
  */
 public class TestConnection
 {
-
+    public static void main(String [] args){
+        
+    }
+    
     /**
      * Constructor for objects of class TestConnection
      */
