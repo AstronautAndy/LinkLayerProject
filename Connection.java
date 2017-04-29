@@ -42,8 +42,32 @@ public class Connection
     		outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
         }catch(Exception ex){
             ex.printStackTrace();
-        }
-    		
+        }    		
     }
     
+    public void send(byte[] payload){
+        try
+        {
+            //send bytes out to socket
+            outputStream.write(payload);
+        }
+        catch(Exception ex){ex.printStackTrace(); }
+    }
+    
+    public byte[] receive(){
+         byte[] bytesRecieved = null;
+        try
+        {
+            
+            byte[] bytes = new byte[1024];
+            int numBytes = inputStream.read(bytes);
+            if ( numBytes > 0)
+            {
+                bytesRecieved = new byte[numBytes];
+                System.arraycopy(bytes, 0, bytesRecieved, 0, numBytes );
+            }
+        } catch (IOException e) {}
+
+        return bytesRecieved;
+    }
 }
