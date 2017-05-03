@@ -33,9 +33,9 @@ public class Router
             int thisRouterPort =  sc.nextInt(); //Read the int on the first line of the router text file
             //Initialize the server socket located on this host
             serversocket = new ServerSocket(thisRouterPort); //Create a new server socket belonging to the router
-            connectionSocket = serversocket.accept(); //Remember that the .accept() method causes the program to wait until a client has connected to the server 
-            inputStream = connectionSocket.getInputStream(); //Initialize input stream
-            outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
+            //connectionSocket = serversocket.accept(); //Remember that the .accept() method causes the program to wait until a client has connected to the server 
+            //inputStream = connectionSocket.getInputStream(); //Initialize input stream
+            //outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
             
             while( sc.hasNextLine() ){ //For every line of the router.txt file after the first line, create a new socket port
                 Connection newConnection;
