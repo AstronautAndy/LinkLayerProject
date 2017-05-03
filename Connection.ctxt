@@ -1,13 +1,14 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Connection()
+comment0.params=port\ ipAddress
+comment0.target=Connection(int,\ java.net.InetAddress)
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Connection\r\n
 comment1.params=i
 comment1.target=void\ createForeignSocket(java.net.InetAddress)
 comment2.params=
 comment2.target=void\ createLocalSocket()
 comment3.params=payload
-comment3.target=void\ send(byte[])
+comment3.target=void\ send(java.net.DatagramPacket)
+comment3.text=\r\n\ \r\n
 comment4.params=
 comment4.target=byte[]\ receive()
 comment5.params=i

@@ -1,8 +1,7 @@
 import java.util.*;
 import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.InetAddress;
+import java.net.*;
+
 /**
  * Connection will be used to store the port number used to connect a router to a neighbor
  * 
@@ -17,11 +16,12 @@ public class Connection
     private Socket connectionSocket;
     private InputStream inputStream;
     private DataOutputStream outputStream;
+    private DatagramSocket socket;
     
     /**
      * Constructor for objects of class Connection
      */
-    public Connection()
+    public Connection(int port, InetAddress ipAddress)
     {
         
     }
@@ -46,11 +46,14 @@ public class Connection
         }    		
     }
     
-    public void send(byte[] payload){
+    /**
+     * 
+     */
+    public void send(DatagramPacket payload){
         try
         {
             //send bytes out to socket
-            outputStream.write(payload);
+            socket.send(payload);
         }
         catch(Exception ex){ex.printStackTrace(); }
     }
