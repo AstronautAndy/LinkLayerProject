@@ -16,9 +16,9 @@ public class ReceiveData extends Thread
      */
     public ReceiveData(Router r)
     {
-        this.r = r;
+        
         try{
-            r.connectionSocket = r.serversocket.accept();
+
         }catch(Exception ex){
             ex.printStackTrace();
         }

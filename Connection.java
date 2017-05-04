@@ -11,26 +11,25 @@ import java.net.*;
 public class Connection
 {
     private InetAddress ipAddress;
-    private int SocketNum;
+    private int portNum;
     private int weight;
-    private Socket connectionSocket;
-    private InputStream inputStream;
-    private DataOutputStream outputStream;
     private DatagramSocket socket;
     
     /**
      * Constructor for objects of class Connection
      */
-    public Connection(int port, InetAddress ipAddress)
+    public Connection(int portNum, InetAddress ipAddress)
     {
-        
+        this.portNum = portNum;
+        this.ipAddress = ipAddress;
     }
-
+    
+    /*
     public void createForeignSocket(InetAddress i){
         try{
             connectionSocket = new Socket(i,SocketNum); //Create a new socket belonging to the router
-    		inputStream = connectionSocket.getInputStream(); //Initialize input stream
-    		outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
+            inputStream = connectionSocket.getInputStream(); //Initialize input stream
+            outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
         }catch(Exception ex){
             ex.printStackTrace();
         }
@@ -39,12 +38,13 @@ public class Connection
     public void createLocalSocket(){
         try{
             connectionSocket = new Socket("localhost",SocketNum); //Create a new socket belonging to the router
-    		inputStream = connectionSocket.getInputStream(); //Initialize input stream
-    		outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
+            inputStream = connectionSocket.getInputStream(); //Initialize input stream
+            outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
         }catch(Exception ex){
             ex.printStackTrace();
-        }    		
+        }           
     }
+    */
     
     /**
      * 
@@ -58,23 +58,14 @@ public class Connection
         catch(Exception ex){ex.printStackTrace(); }
     }
     
-    public byte[] receive(){
-         byte[] bytesRecieved = null;
+    public DatagramPacket receive(){
+        byte[] receiveData = new byte[1024];
+        DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
         try
         {
-            byte[] bytes = new byte[1024];
-            int numBytes = inputStream.read(bytes);
-            if ( numBytes > 0)
-            {
-                bytesRecieved = new byte[numBytes];
-                System.arraycopy(bytes, 0, bytesRecieved, 0, numBytes );
-            }
+            socket.receive(receivePacket);
         } catch (IOException e) {}
-        return bytesRecieved;
-    }
-    
-    public void setSocket(int i){
-        SocketNum = i;
+        return receivePacket;
     }
     
     public void setWeight(int i){
@@ -83,5 +74,17 @@ public class Connection
     
     public int getWeight(){
         return weight;
+    }
+    
+    public InetAddress getIPAddress(){
+        return ipAddress;
+    }
+    
+    public int getPortNum(){
+        return portNum;
+    }
+    
+    public DatagramSocket getSocket(){
+        return socket;
     }
 }

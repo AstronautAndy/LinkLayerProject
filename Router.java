@@ -29,25 +29,16 @@ public class Router
         try{
             FileReader fr = new FileReader(fileName);
             Scanner sc = new Scanner(fr);
-            sc.next(); //Skip the first value of the file (the one that just reads "localhost")
+            InetAddress thisIp = InetAddress.getByName( sc.next() ); //Skip the first value of the file (the one that just reads "localhost")
             int thisRouterPort =  sc.nextInt(); //Read the int on the first line of the router text file
-            //Initialize the server socket located on this host
-            //routerSocket = new DatagramSocket(thisRouterPort); //Create a new server socket belonging to the router
-            //connectionSocket = serversocket.accept(); //Remember that the .accept() method causes the program to wait until a client has connected to the server 
-            //inputStream = connectionSocket.getInputStream(); //Initialize input stream
-            //outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
+            routerSocket = new DatagramSocket(thisRouterPort,thisIp);
             
             while( sc.hasNextLine() ){ //For every line of the router.txt file after the first line, create a new socket port
                 Connection newConnection;
                 String ipString = sc.next();
                 InetAddress ip = InetAddress.getByName(ipString); //Convert the string to an InetAddress
-                /*
-                newConnection = new Connection();
-                newConnection.setSocket( Integer.parseInt( sc.next() )  );
-                newConnection.createForeignSocket(ip);
-                newConnection.setWeight( Integer.parseInt(sc.next() ) ); 
-                distanceVector.put( newConnection,newConnection.getWeight() );
-                */
+                newConnection = new Connection(Integer.parseInt( sc.next()),ip);
+                newConnection.setWeight(Integer.parseInt(sc.next()));
             }
             
         }catch(Exception ex){
@@ -55,6 +46,11 @@ public class Router
         }
 
     }
-
     
+    /**
+     * This method will be used to bundle the distanceVector into a datagram to be sent to another router
+     */
+    public void sendDistanceVector(){
+        
+    }
 }
