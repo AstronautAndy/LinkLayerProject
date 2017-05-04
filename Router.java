@@ -49,8 +49,22 @@ public class Router
     
     /**
      * This method will be used to bundle the distanceVector into a datagram to be sent to another router
+     * Remember the constructor for DatagramPacket is (byte[] buf, int length, InetAddress address, int port)
+     * Starts by converting the distanceVector to a byte array (serialization). This byte set needs to be deserialized
+     * on the other router.
      */
-    public void sendDistanceVector(){
+    public void sendDistanceVector(Connection c){
+        byte[] payload;
+        try{
+            ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(byteOut);
+            out.writeObject(distanceVector);
+            payload = byteOut.toByteArray();
+            DatagramPacket send = new DatagramPacket(payload,payload.length,c.getIPAddress(),c.getPortNum());
+            routerSocket.send(send);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         
     }
 }

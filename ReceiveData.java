@@ -1,4 +1,5 @@
-
+import java.net.*;
+import java.io.*;
 /**
  * This class will be used to continuously accept any data sent to the given router at any given time. Should
  * use some kind of socket based "listen" command embedded in the Router class.
@@ -17,14 +18,15 @@ public class ReceiveData extends Thread
     public ReceiveData(Router r)
     {
         
-        try{
-
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
+        
     }
 
     public void run(){
-        
+        byte[] receiveData = new byte[1024];
+        DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
+        try
+        {
+            r.routerSocket.receive(receivePacket);
+        } catch (IOException e) {e.printStackTrace();}
     }
 }
