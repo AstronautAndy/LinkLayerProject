@@ -24,28 +24,6 @@ public class Connection
         this.ipAddress = ipAddress;
     }
     
-    /*
-    public void createForeignSocket(InetAddress i){
-        try{
-            connectionSocket = new Socket(i,SocketNum); //Create a new socket belonging to the router
-            inputStream = connectionSocket.getInputStream(); //Initialize input stream
-            outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-    
-    public void createLocalSocket(){
-        try{
-            connectionSocket = new Socket("localhost",SocketNum); //Create a new socket belonging to the router
-            inputStream = connectionSocket.getInputStream(); //Initialize input stream
-            outputStream = new DataOutputStream( connectionSocket.getOutputStream() ); //Initialize output stream
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }           
-    }
-    */
-    
     /**
      * 
      */
