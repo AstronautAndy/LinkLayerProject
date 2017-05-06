@@ -18,14 +18,16 @@ public class Router
     DataOutputStream outputStream;
     DatagramSocket routerSocket;
 
-    Map<Connection,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
-    Map<Integer, Connection> neighbors;
+    HashMap<Connection,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
+    HashMap<Integer, Connection> neighbors;
 
     /**
      * Constructor for objects of class Router. Needs to read the file with the name given as a parameter 
      */
     public Router(String fileName, Boolean router)
     {
+        distanceVector = new HashMap<Connection,Integer>();
+        neighbors = new HashMap<Integer, Connection>();
         try{
             FileReader fr = new FileReader(fileName);
             Scanner sc = new Scanner(fr);

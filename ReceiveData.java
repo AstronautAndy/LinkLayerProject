@@ -17,8 +17,7 @@ public class ReceiveData extends Thread
      */
     public ReceiveData(Router r)
     {
-        
-        
+        this.r = r;
     }
 
     public void run(){
@@ -26,7 +25,7 @@ public class ReceiveData extends Thread
         DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
         try
         {
-            r.routerSocket.receive(receivePacket);
-        } catch (IOException e) {e.printStackTrace();}
+            r.routerSocket.receive(receivePacket); //Causing a null pointer exception
+        } catch (Exception e) {e.printStackTrace();}
     }
 }
