@@ -26,14 +26,16 @@ public class SendData extends Thread{
      */
     public void run(){
         //System.out.print("Sending data");
-        try{
-            // wait 30000 ms or 30 s to send the DV
-            Thread.sleep(1000);
-            // send the DV
-            senderRouter.sendDistanceVector(receiverConnection);
+        while(true){
+            try{
+                // wait 30000 ms or 30 s to send the DV
+                Thread.sleep(1000);
+                // send the DV
+                senderRouter.sendDistanceVector(receiverConnection);
+            }
+            catch (InterruptedException interruptedException){
+                System.out.println( "Second Thread is interrupted when it is sleeping" +interruptedException);
+            }        
         }
-        catch (InterruptedException interruptedException){
-            System.out.println( "Second Thread is interrupted when it is sleeping" +interruptedException);
-        }        
     }
 }

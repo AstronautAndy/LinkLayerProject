@@ -17,13 +17,15 @@ public class ReceiveData extends Thread{
     }
 
     public void run(){
-        byte[] receiveData = new byte[1024];
-        DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
-        try{
-            r.routerSocket.receive(receivePacket);
-            System.out.println("Obtained packet");
-            //System.out.println("Received new Packet");
-        } catch (IOException e) {e.printStackTrace();}
+        while(true){
+            byte[] receiveData = new byte[1024];
+            DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
+            try{
+                r.routerSocket.receive(receivePacket);
+                System.out.println("Obtained packet");
+                //System.out.println("Received new Packet");
+            } catch (IOException e) {e.printStackTrace();}
+        }
     }
     
     /**

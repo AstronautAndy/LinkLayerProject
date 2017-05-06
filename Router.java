@@ -47,7 +47,7 @@ public class Router{
         }
         //after adding all SendData threads to the arrayList, iterate through the list and run each
         for(int i=0; i<threadList.size(); i++){
-            threadList.get(i).run();
+            threadList.get(i).start();
         }
     }
     
