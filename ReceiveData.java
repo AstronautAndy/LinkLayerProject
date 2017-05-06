@@ -19,8 +19,7 @@ public class ReceiveData extends Thread{
     public void run(){
         byte[] receiveData = new byte[1024];
         DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
-        try
-        {
+        try{
             r.routerSocket.receive(receivePacket);
         } catch (IOException e) {e.printStackTrace();}
     }
