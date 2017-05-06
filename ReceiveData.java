@@ -34,7 +34,11 @@ public class ReceiveData extends Thread{
      */
     public HashMap<Connection,Integer> deserializeDistanceVectorBytes(byte[] inputBytes){
         HashMap<Connection,Integer> newDistanceVector = null;
-        
+        try{
+            ByteArrayInputStream byteIn = new ByteArrayInputStream(inputBytes);
+            ObjectInputStream in = new ObjectInputStream(byteIn);
+            newDistanceVector = (HashMap<Connection,Integer>) in.readObject();
+        }catch(Exception ex){ ex.printStackTrace(); }
         return newDistanceVector;
     }
 }
