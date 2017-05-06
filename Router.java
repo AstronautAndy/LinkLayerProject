@@ -6,28 +6,21 @@ import java.net.*;
  * This class will contain all the data that the router needs access to, including the forwarding table and
  * all the necessary code that makes the sockets work. Contains a distance vector and a forwarding table, as well as
  * the sockets that are able to send messages to other routers.
- * 
- * @author (your name) 
- * @version (a version number or a date)
  */
-public class Router
-{
+public class Router{
     ServerSocket serversocket;
     Socket connectionSocket;
     InputStream inputStream;
     DataOutputStream outputStream;
     DatagramSocket routerSocket;
 
-    HashMap<Connection,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
-    HashMap<Integer, Connection> neighbors;
+    Map<Connection,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
+    Map<Integer, Connection> neighbors;
 
     /**
      * Constructor for objects of class Router. Needs to read the file with the name given as a parameter 
      */
-    public Router(String fileName, Boolean router)
-    {
-        distanceVector = new HashMap<Connection,Integer>();
-        neighbors = new HashMap<Integer, Connection>();
+    public Router(String fileName, Boolean router){
         try{
             FileReader fr = new FileReader(fileName);
             Scanner sc = new Scanner(fr);
@@ -68,7 +61,6 @@ public class Router
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        
     }
     
     /**

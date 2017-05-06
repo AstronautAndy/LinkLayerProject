@@ -1,11 +1,16 @@
 #BlueJ class context
 comment0.params=fileName\ router
 comment0.target=Router(java.lang.String,\ java.lang.Boolean)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Router.\ Needs\ to\ read\ the\ file\ with\ the\ name\ given\ as\ a\ parameter\ \r\n
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Router.\ Needs\ to\ read\ the\ file\ with\ the\ name\ given\ as\ a\ parameter\ \n
 comment1.params=c
 comment1.target=void\ sendDistanceVector(Connection)
+<<<<<<< HEAD
 comment1.text=\r\n\ This\ method\ will\ be\ used\ to\ bundle\ the\ distanceVector\ into\ a\ datagram\ to\ be\ sent\ to\ another\ router\r\n\ Remember\ the\ constructor\ for\ DatagramPacket\ is\ (byte[]\ buf,\ int\ length,\ InetAddress\ address,\ int\ port)\r\n\ Starts\ by\ converting\ the\ distanceVector\ to\ a\ byte\ array\ (serialization).\ This\ byte\ set\ needs\ to\ be\ deserialized\r\n\ on\ the\ other\ router.\r\n
 comment2.params=newDistanceVector
 comment2.target=void\ updateDistanceVector(java.util.HashMap)
 comment2.text=\r\n\ This\ method\ will\ be\ used\ to\ determine\ if\ the\ distance\ vector\ obtained\ from\ ReceiveData\ contains\ shorter\ (or\ greater)\r\n\ path\ lengths\r\n
 numComments=3
+=======
+comment1.text=\n\ This\ method\ will\ be\ used\ to\ bundle\ the\ distanceVector\ into\ a\ datagram\ to\ be\ sent\ to\ another\ router\n\ Remember\ the\ constructor\ for\ DatagramPacket\ is\ (byte[]\ buf,\ int\ length,\ InetAddress\ address,\ int\ port)\n\ Starts\ by\ converting\ the\ distanceVector\ to\ a\ byte\ array\ (serialization).\ This\ byte\ set\ needs\ to\ be\ deserialized\n\ on\ the\ other\ router.\n
+numComments=2
+>>>>>>> a190c9bc9b84803426ee4e096fd21616a8859069

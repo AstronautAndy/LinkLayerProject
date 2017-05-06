@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SendData()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ SendData\n
+comment1.params=r\ c
+comment1.target=SendData(Router,\ Connection)
+comment1.text=\n\ The\ constructor\ takes\ in\ a\ router\ and\ connection\ to\ set\ as\ the\ sender\ and\ receiver.\n
+comment2.params=
+comment2.target=void\ run()
+comment2.text=\n\ Simply\ send\ the\ routers\ DV\ to\ the\ other\ guy\ at\ the\ other\ end\ of\ the\ connection,\ then\ wait\ 30\ seconds\ to\ do\ it\ again.\n
+numComments=3
