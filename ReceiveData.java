@@ -26,6 +26,14 @@ public class ReceiveData extends Thread{
                 System.out.println("Obtained packet - Size of DV: " + newDV.size());
                 printIncomingData(newDV);
                 //Next need to convert receivePacket to a Distance Vector
+                
+                // out of the receivePacket, must get the DV hashmap and the hasmap length
+                // deserializeDistanceVectorBytes(receivePacket)
+                
+                // iterate through the receiced DV hashmap, and place the updated distances of the neighbor to other nodes in its own DV
+                
+                // based on new neighbor values, update its own DV
+                // if the DV is different, send the new one to all its neighbors                
             } catch (IOException e) {e.printStackTrace();}
         }
     }
@@ -45,6 +53,7 @@ public class ReceiveData extends Thread{
             ObjectInputStream in = new ObjectInputStream(byteIn);
             newDistanceVector = (HashMap<Connection,Integer>) in.readObject();
         }catch(Exception ex){ ex.printStackTrace(); }
+        r.addNeighborsValues(newDistanceVector);        
         return newDistanceVector;
     }
     

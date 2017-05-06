@@ -1,11 +1,17 @@
 #BlueJ class context
 comment0.params=fileName\ router
 comment0.target=Router(java.lang.String,\ java.lang.Boolean)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Router.\ Needs\ to\ read\ the\ file\ with\ the\ name\ given\ as\ a\ parameter\ \r\n
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Router.\ Needs\ to\ read\ the\ file\ with\ the\ name\ given\ as\ a\ parameter\ \n
 comment1.params=c
 comment1.target=void\ sendDistanceVector(Connection)
-comment1.text=\r\n\ This\ method\ will\ be\ used\ to\ bundle\ the\ distanceVector\ into\ a\ datagram\ to\ be\ sent\ to\ another\ router\r\n\ Remember\ the\ constructor\ for\ DatagramPacket\ is\ (byte[]\ buf,\ int\ length,\ InetAddress\ address,\ int\ port)\r\n\ Starts\ by\ converting\ the\ distanceVector\ to\ a\ byte\ array\ (serialization).\ This\ byte\ set\ needs\ to\ be\ deserialized\r\n\ on\ the\ other\ router.\r\n
+comment1.text=\n\ This\ method\ will\ be\ used\ to\ bundle\ the\ distanceVector\ into\ a\ datagram\ to\ be\ sent\ to\ another\ router\n\ Remember\ the\ constructor\ for\ DatagramPacket\ is\ (byte[]\ buf,\ int\ length,\ InetAddress\ address,\ int\ port)\n\ Starts\ by\ converting\ the\ distanceVector\ to\ a\ byte\ array\ (serialization).\ This\ byte\ set\ needs\ to\ be\ deserialized\n\ on\ the\ other\ router.\n
 comment2.params=newDistanceVector
-comment2.target=void\ updateDistanceVector(java.util.HashMap)
-comment2.text=\r\n\ This\ method\ will\ be\ used\ to\ determine\ if\ the\ distance\ vector\ obtained\ from\ ReceiveData\ contains\ shorter\ (or\ greater)\r\n\ path\ lengths\r\n
-numComments=3
+comment2.target=void\ compareDistanceVector(java.util.HashMap)
+comment2.text=\n\ This\ method\ will\ be\ used\ to\ determine\ if\ the\ distance\ vector\ obtained\ from\ ReceiveData\ contains\ shorter\ (or\ greater)\n\ path\ lengths\n
+comment3.params=dv
+comment3.target=void\ updateDistanceVector(java.util.HashMap)
+comment3.text=\n\ \n
+comment4.params=newDistanceVector
+comment4.target=void\ addNeighborsValues(java.util.HashMap)
+comment4.text=\n\ Looks\ at\ the\ values\ of\ a\ \n
+numComments=5
