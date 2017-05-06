@@ -20,18 +20,18 @@ public class CommandLine extends Thread{
         String command;
         while(sc.hasNextLine() ){ //Read in code one line at a time from the console
             command = sc.next();
-//             switch(command) {
-//                 // PRINT - print the current node's distance vector, and the distance vectors received from the neighbors
-//                 case "PRINT": System.out.println("Printing"); break;
-//                 // MSG - <dst-ip> <dst-port> <msg> - send message msg to a destination with the specified address
-//                 case "MSG": int port = Integer.parseInt(sc.next());
-//                             r.sendDistanceVector(r.neighbors.get(port));
-//                             break;
-//                 // CHANGE <dst-ip> <dst-port> <new-weight> - change the weight between the current node and the specified node to 
-//                 // new-weight and update the specified node about the change
-//                 case "CHANGE": break;
-//                 default: System.out.println("Command not recognized");
-//             }
+            switch(command) {
+                // PRINT - print the current node's distance vector, and the distance vectors received from the neighbors
+                case "PRINT": System.out.println("Printing"); break;
+                // MSG - <dst-ip> <dst-port> <msg> - send message msg to a destination with the specified address
+                case "MSG": int port = Integer.parseInt(sc.next());
+                            r.sendDistanceVector(r.neighbors.get(port));
+                            break;
+                // CHANGE <dst-ip> <dst-port> <new-weight> - change the weight between the current node and the specified node to 
+                // new-weight and update the specified node about the change
+                case "CHANGE": break;
+                default: System.out.println("Command not recognized");
+            }
         }
     }
 }

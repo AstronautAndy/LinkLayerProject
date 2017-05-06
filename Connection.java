@@ -47,6 +47,7 @@ public class Connection{
         return receivePacket;
     }
     
+    //Getter and setter methods
     public void setWeight(int i){
         weight = i;
     }

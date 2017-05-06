@@ -21,6 +21,8 @@ public class ReceiveData extends Thread{
         DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
         try{
             r.routerSocket.receive(receivePacket);
+            System.out.println("Obtained packet");
+            //System.out.println("Received new Packet");
         } catch (IOException e) {e.printStackTrace();}
     }
     

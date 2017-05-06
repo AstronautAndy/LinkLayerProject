@@ -45,7 +45,10 @@ public class Router{
         }catch(Exception ex){
             ex.printStackTrace();
         }
-
+        //after adding all SendData threads to the arrayList, iterate through the list and run each
+        for(int i=0; i<threadList.size(); i++){
+            threadList.get(i).run();
+        }
     }
     
     /**
@@ -55,6 +58,7 @@ public class Router{
      * on the other router.
      */
     public void sendDistanceVector(Connection c){
+        System.out.println("Sending Vector");
         byte[] payload;
         try{
             ByteArrayOutputStream byteOut = new ByteArrayOutputStream();

@@ -25,9 +25,10 @@ public class SendData extends Thread{
      * Simply send the routers DV to the other guy at the other end of the connection, then wait 30 seconds to do it again.
      */
     public void run(){
+        //System.out.print("Sending data");
         try{
             // wait 30000 ms or 30 s to send the DV
-            Thread.sleep(30000);
+            Thread.sleep(1000);
             // send the DV
             senderRouter.sendDistanceVector(receiverConnection);
         }
