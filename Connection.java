@@ -8,7 +8,7 @@ import java.net.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Connection{
+public class Connection implements java.io.Serializable{
     private InetAddress ipAddress;
     private Integer portNum;
     private int weight;

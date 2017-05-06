@@ -37,7 +37,8 @@ public class Router{
                 InetAddress ip = InetAddress.getByName(ipString); //Convert the string to an InetAddress
                 newConnection = new Connection(Integer.parseInt( sc.next()),ip);
                 newConnection.setWeight(Integer.parseInt(sc.next()));
-                neighbors.put(newConnection.getPortNum(),newConnection);
+                neighbors.put(newConnection.getPortNum(),newConnection); //Add new neighbor to set of neighbors
+                distanceVector.put(newConnection,newConnection.getWeight()); //Add new neighbor to basic distance vector
                 SendData sd = new SendData(this,newConnection);
                 threadList.add(sd);
             }
