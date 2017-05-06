@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.params=r
-comment0.target=CommandLine(Router)
-comment0.text=\n\ Constructor\ for\ objects\ of\ class\ CommandLine.\ Takes\ in\ a\ router\ as\ a\ parameter\n
-comment1.params=
-comment1.target=void\ run()
-comment1.text=\n\ Method\ needs\ to\ handle\ multiple\ cases.\ Either\ prints\ out\ the\ current\ distance,\ sends\ a\ message\ to\ another\ router,\ or\ changes\ the\ weight\ of\ a\ connection\n
+comment0.params=
+comment0.target=void\ run()
+comment0.text=\r\n\ Method\ needs\ to\ handle\ multiple\ cases.\r\n
+comment1.params=r
+comment1.target=CommandLine(Router)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ CommandLine\r\n
 numComments=2
