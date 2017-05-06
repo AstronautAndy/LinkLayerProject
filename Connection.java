@@ -14,6 +14,12 @@ public class Connection implements java.io.Serializable{
     private int weight;
     private DatagramSocket socket;
     
+    //////////////////////////////////////
+    private InetAddress sourceIP;
+    private InetAddress destinationIP;
+    private int edgeWeight;
+    private HashMap<InetAddress,Integer> nextIP;
+    
     /**
      * Constructor for objects of class Connection
      */

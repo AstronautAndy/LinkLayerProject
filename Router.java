@@ -14,10 +14,9 @@ public class Router{
     DataOutputStream outputStream;
     DatagramSocket routerSocket;
 
+    HashMap<Connection,Integer> distanceVector;
     // Distance vector containing the set of routers in the network and the calculated distances to each
-    HashMap<Connection,Integer> distanceVector; 
-    
-    // Distance vector containing a possible update to the actual DV
+
     HashMap<Connection,Integer> updateDV;
     
     ArrayList<Connection> neighbors;
@@ -100,6 +99,7 @@ public class Router{
      * Looks at the values of a 
      */
     public void addNeighborsValues(HashMap<Connection,Integer> newDistanceVector){
+        
         // add the values form dv to the routers actual distance vector
         // call updateDistanceVector to update the actual distance vector based on the new values
     }    
