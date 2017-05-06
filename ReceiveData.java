@@ -25,7 +25,7 @@ public class ReceiveData extends Thread{
                 System.out.println("Obtained packet");
                 // out of the receivePacket, must get the DV hashmap and the hasmap length
                 // deserializeDistanceVectorBytes(receivePacket)
-                
+                HashMap<Connection,Integer> newDV = deserializeDistanceVectorBytes(receivePacket.getData());
                 // iterate through the receiced DV hashmap, and place the updated distances of the neighbor to other nodes in its own DV
                 
                 // based on new neighbor values, update its own DV
