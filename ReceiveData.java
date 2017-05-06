@@ -7,6 +7,7 @@ import java.io.*;
  */
 public class ReceiveData extends Thread{
     private Router r;
+
     /**
      * Constructor for objects of class ReceiveData
      */
@@ -20,20 +21,15 @@ public class ReceiveData extends Thread{
             byte[] receiveData = new byte[1024];
             DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
             try{
-                r.routerSocket.receive(receivePacket); //"Turns" receivePacket into data received from the socket
-                
-                HashMap<Connection,Integer> newDV = deserializeDistanceVectorBytes(receivePacket.getData());
-                System.out.println("Obtained packet - Size of DV: " + newDV.size());
-                printIncomingData(newDV);
-                //Next need to convert receivePacket to a Distance Vector
-                
+                r.routerSocket.receive(receivePacket);
+                System.out.println("Obtained packet");
                 // out of the receivePacket, must get the DV hashmap and the hasmap length
                 // deserializeDistanceVectorBytes(receivePacket)
                 
                 // iterate through the receiced DV hashmap, and place the updated distances of the neighbor to other nodes in its own DV
                 
                 // based on new neighbor values, update its own DV
-                // if the DV is different, send the new one to all its neighbors                
+                // if the DV is different, send the new one to all its neighbors
             } catch (IOException e) {e.printStackTrace();}
         }
     }
@@ -53,19 +49,7 @@ public class ReceiveData extends Thread{
             ObjectInputStream in = new ObjectInputStream(byteIn);
             newDistanceVector = (HashMap<Connection,Integer>) in.readObject();
         }catch(Exception ex){ ex.printStackTrace(); }
-        r.addNeighborsValues(newDistanceVector);        
+        r.addNeighborsValues(newDistanceVector);
         return newDistanceVector;
-    }
-    
-    /**
-     * This method will primarily be used for debugging and testing purposes. 
-     */
-    public void printIncomingData( HashMap<Connection,Integer> printDV){
-        Iterator it = printDV.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry pair = (Map.Entry)it.next();
-            System.out.println(pair.getKey() + " = " + pair.getValue());
-            it.remove(); // avoids a ConcurrentModificationException
-        }
-    }
+    }    
 }

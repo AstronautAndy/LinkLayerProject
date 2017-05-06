@@ -6,6 +6,7 @@ public class SendData extends Thread{
     private Router senderRouter;
     // this is the Connection that the sender has. There is one of these SendData threads per connection the sender has.
     private Connection receiverConnection;
+    
     /**
      * Constructor for objects of class SendData
      */
