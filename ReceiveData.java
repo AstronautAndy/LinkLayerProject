@@ -1,3 +1,4 @@
+import java.util.*;
 import java.net.*;
 import java.io.*;
 /**
@@ -27,5 +28,19 @@ public class ReceiveData extends Thread
         {
             r.routerSocket.receive(receivePacket); //Causing a null pointer exception
         } catch (Exception e) {e.printStackTrace();}
+    }
+    
+    /**
+     * Should be used in the ReceiveData thread to pass received data to the Router for the router. Returns a 
+     * HashMap<Connection,Integer> that the thread has deserialized from the bytes
+     * ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+     * ObjectInputStream in = new ObjectInputStream(byteIn);
+     * Map<Integer, String> data2 = (Map<Integer, String>) in.readObject();
+     * System.out.println(data2.toString());
+     */
+    public HashMap<Connection,Integer> deserializeDistanceVectorBytes(byte[] inputBytes){
+        HashMap<Connection,Integer> newDistanceVector = null;
+        
+        return newDistanceVector;
     }
 }

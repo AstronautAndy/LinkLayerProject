@@ -70,4 +70,12 @@ public class Router
         }
         
     }
+    
+    /**
+     * This method will be used to determine if the distance vector obtained from ReceiveData contains shorter (or greater)
+     * path lengths
+     */
+    public void updateDistanceVector(HashMap<Connection,Integer> newDistanceVector){
+        
+    }
 }
