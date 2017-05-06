@@ -1,12 +1,7 @@
-
 /**
- * Write a description of class Run here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Starts up the program for each router. Creates a instance of each router, opens a terminal for it, and creates a new receive data thread.
  */
-public class Run
-{
+public class Run{
    
     public static void main(String [] args){
         Router r = new Router(args[0],true);
@@ -15,6 +10,4 @@ public class Run
         cl.start();
         rd.start();
     }
-
-   
 }

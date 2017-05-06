@@ -10,5 +10,3 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
-
-Whenever you're on your laptop and you move locations, make sure that you update the ip addresses in your text files
