@@ -14,7 +14,12 @@ public class Router{
     DataOutputStream outputStream;
     DatagramSocket routerSocket;
 
-    HashMap<Connection,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
+    // Distance vector containing the set of routers in the network and the calculated distances to each
+    HashMap<Connection,Integer> distanceVector; 
+    
+    // Distance vector containing a possible update to the actual DV
+    HashMap<Connection,Integer> updateDV;
+    
     HashMap<Integer, Connection> neighbors;
     ArrayList<SendData> threadList = new ArrayList<SendData>();
 
@@ -77,7 +82,25 @@ public class Router{
      * This method will be used to determine if the distance vector obtained from ReceiveData contains shorter (or greater)
      * path lengths
      */
-    public void updateDistanceVector(HashMap<Connection,Integer> newDistanceVector){
-        
+    public void compareDistanceVector(HashMap<Connection,Integer> newDistanceVector){
+        // compares new and old DV's 
+        // if the new one is different, it will immediately be sent to all neighbors. Else, nothing will happen and the old DV will be resent to its neighbors 
+        // at the regular time intervals
     }
+    
+    /**
+     * 
+     */
+    public void updateDistanceVector(HashMap<Connection,Integer> dv){
+        // update the actual distance vector
+        // call compareDistanceVector to compare new and old DV's
+    }
+    
+    /**
+     * Looks at the values of a 
+     */
+    public void addNeighborsValues(HashMap<Connection,Integer> newDistanceVector){
+        // add the values form dv to the routers actual distance vector
+        // call updateDistanceVector to update the actual distance vector based on the new values
+    }    
 }
