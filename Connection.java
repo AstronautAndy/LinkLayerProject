@@ -8,8 +8,7 @@ import java.net.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Connection
-{
+public class Connection{
     private InetAddress ipAddress;
     private Integer portNum;
     private int weight;
@@ -18,14 +17,13 @@ public class Connection
     /**
      * Constructor for objects of class Connection
      */
-    public Connection(int portNum, InetAddress ipAddress)
-    {
+    public Connection(int portNum, InetAddress ipAddress){
         this.portNum = portNum;
         this.ipAddress = ipAddress;
     }
     
     /**
-     * 
+     * sends a packet when called
      */
     public void send(DatagramPacket payload){
         try
@@ -36,6 +34,9 @@ public class Connection
         catch(Exception ex){ex.printStackTrace(); }
     }
     
+    /**
+     * 
+     */
     public DatagramPacket receive(){
         byte[] receiveData = new byte[1024];
         DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
