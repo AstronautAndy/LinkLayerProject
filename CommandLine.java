@@ -19,7 +19,9 @@ public class CommandLine extends Thread
             command = sc.next();
             switch(command) {
                 case "PRINT": System.out.println("Printing"); break;
-                case "MSG": break;
+                case "MSG": int port = Integer.parseInt(sc.next());
+                            r.sendDistanceVector(r.neighbors.get(port));
+                            break;
                 case "CHANGE": break;
                 default: System.out.println("COmmand not recognized");
             }

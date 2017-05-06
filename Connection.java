@@ -11,7 +11,7 @@ import java.net.*;
 public class Connection
 {
     private InetAddress ipAddress;
-    private int portNum;
+    private Integer portNum;
     private int weight;
     private DatagramSocket socket;
     
@@ -58,7 +58,7 @@ public class Connection
         return ipAddress;
     }
     
-    public int getPortNum(){
+    public Integer getPortNum(){
         return portNum;
     }
     

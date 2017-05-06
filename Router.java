@@ -19,7 +19,7 @@ public class Router
     DatagramSocket routerSocket;
 
     Map<Connection,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
-    //Map<Connection,Connection> neighbors; //Contains a map of IP addresses neighboring the localhost and their associated connection
+    Map<Integer, Connection> neighbors;
 
     /**
      * Constructor for objects of class Router. Needs to read the file with the name given as a parameter 
@@ -39,6 +39,7 @@ public class Router
                 InetAddress ip = InetAddress.getByName(ipString); //Convert the string to an InetAddress
                 newConnection = new Connection(Integer.parseInt( sc.next()),ip);
                 newConnection.setWeight(Integer.parseInt(sc.next()));
+                neighbors.put(newConnection.getPortNum(),newConnection);
             }
             
         }catch(Exception ex){
