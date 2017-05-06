@@ -16,6 +16,7 @@ public class Router{
 
     HashMap<Connection,Integer> distanceVector; //Distance vector containing the set of routers in the network and the calculated distances to each
     HashMap<Integer, Connection> neighbors;
+    ArrayList<SendData> threadList = new ArrayList<SendData>();
 
     /**
      * Constructor for objects of class Router. Needs to read the file with the name given as a parameter 
@@ -37,6 +38,8 @@ public class Router{
                 newConnection = new Connection(Integer.parseInt( sc.next()),ip);
                 newConnection.setWeight(Integer.parseInt(sc.next()));
                 neighbors.put(newConnection.getPortNum(),newConnection);
+                SendData sd = new SendData(this,newConnection);
+                threadList.add(sd);
             }
             
         }catch(Exception ex){
