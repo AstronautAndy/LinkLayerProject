@@ -20,7 +20,7 @@ public class Router{
     // Distance vector containing a possible update to the actual DV
     HashMap<Connection,Integer> updateDV;
     
-    HashMap<Integer, Connection> neighbors;
+    ArrayList<Connection> neighbors;
     ArrayList<SendData> threadList = new ArrayList<SendData>();
 
     /**
@@ -28,7 +28,7 @@ public class Router{
      */
     public Router(String fileName, Boolean router){
         distanceVector = new HashMap<Connection,Integer>();
-        neighbors = new HashMap<Integer, Connection>();
+        neighbors = new ArrayList<Connection>();
         try{
             FileReader fr = new FileReader(fileName);
             Scanner sc = new Scanner(fr);
@@ -42,7 +42,7 @@ public class Router{
                 InetAddress ip = InetAddress.getByName(ipString); //Convert the string to an InetAddress
                 newConnection = new Connection(Integer.parseInt( sc.next()),ip);
                 newConnection.setWeight(Integer.parseInt(sc.next()));
-                neighbors.put(newConnection.getPortNum(),newConnection); //Add new neighbor to set of neighbors
+                neighbors.add(newConnection); //Add new neighbor to set of neighbors
                 distanceVector.put(newConnection,newConnection.getWeight()); //Add new neighbor to basic distance vector
                 SendData sd = new SendData(this,newConnection);
                 threadList.add(sd);
