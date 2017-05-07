@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=i\ p
+comment0.target=Key(java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Key\r\n
+comment1.params=object
+comment1.target=boolean\ equals(java.lang.Object)
+comment2.params=
+comment2.target=int\ hashCode()
+comment3.params=
+comment3.target=java.lang.String\ getIP()
+comment4.params=
+comment4.target=java.lang.String\ getPort()
+numComments=5

@@ -16,17 +16,19 @@ public class ReceiveData extends Thread{
         
     }
 
-    public void run(){
+    public void run() throws NullPointerException{
         while(true){
-            byte[] receiveData = new byte[2048];
+            byte[] receiveData = new byte[1024];
             DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
             try{
                 r.routerSocket.receive(receivePacket);
                 System.out.println("Obtained packet");
                 // out of the receivePacket, must get the DV hashmap and the hasmap length
                 // deserializeDistanceVectorBytes(receivePacket)
-                HashMap<String[],Integer> newDV = deserializeDistanceVectorBytes(receivePacket.getData());
-                r.updateDistanceVector(newDV);
+                try{
+                    HashMap<Key,Integer> newDV = deserializeDistanceVectorBytes(receivePacket.getData());
+                    r.updateDistanceVector(newDV);
+                }catch(Exception ex){ex.printStackTrace(); }
                 // iterate through the receiced DV hashmap, and place the updated distances of the neighbor to other nodes in its own DV
                 // based on new neighbor values, update its own DV
                 // if the DV is different, send the new one to all its neighbors
@@ -42,13 +44,18 @@ public class ReceiveData extends Thread{
      * Map<Integer, String> data2 = (Map<Integer, String>) in.readObject();
      * System.out.println(data2.toString());
      */
-    public HashMap<String[],Integer> deserializeDistanceVectorBytes(byte[] inputBytes) throws EOFException{
-        HashMap<String[],Integer> newDistanceVector = null;
+    public HashMap<Key,Integer> deserializeDistanceVectorBytes(byte[] inputBytes) throws EOFException{
+        //System.out.println("byte array deserialize size " + inputBytes.length);
+        HashMap<Key,Integer> newDistanceVector = null;
         try{
             ByteArrayInputStream byteIn = new ByteArrayInputStream(inputBytes);
             ObjectInputStream in = new ObjectInputStream(byteIn);
-            newDistanceVector = (HashMap<String[],Integer>) in.readObject(); //Causing EOF error
-        }catch(Exception ex){ ex.printStackTrace(); ex.getCause();}
+            newDistanceVector = (HashMap<Key,Integer>) in.readObject(); //Causing EOF error
+            in.close();
+            byteIn.close();
+        }catch(Exception ex){ 
+            //ex.printStackTrace();
+        }
         r.addNeighborsValues(newDistanceVector);
         return newDistanceVector;
     }    
