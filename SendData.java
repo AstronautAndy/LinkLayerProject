@@ -30,7 +30,7 @@ public class SendData extends Thread{
         while(true){
             try{
                 // wait 30000 ms or 30 s to send the DV
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 // send the DV
                 senderRouter.sendDistanceVector(receiverConnection);
             }

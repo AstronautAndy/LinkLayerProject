@@ -6,5 +6,5 @@ comment1.params=
 comment1.target=void\ run()
 comment2.params=inputBytes
 comment2.target=java.util.HashMap\ deserializeDistanceVectorBytes(byte[])
-comment2.text=\r\n\ Should\ be\ used\ in\ the\ ReceiveData\ thread\ to\ pass\ received\ data\ to\ the\ Router\ for\ the\ router.\ Returns\ a\ \r\n\ HashMap<Connection,Integer>\ that\ the\ thread\ has\ deserialized\ from\ the\ bytes\r\n\ ByteArrayInputStream\ byteIn\ \=\ new\ ByteArrayInputStream(byteOut.toByteArray());\r\n\ ObjectInputStream\ in\ \=\ new\ ObjectInputStream(byteIn);\r\n\ Map<Integer,\ String>\ data2\ \=\ (Map<Integer,\ String>)\ in.readObject();\r\n\ System.out.println(data2.toString());\r\n
+comment2.text=\r\n\ Should\ be\ used\ in\ the\ ReceiveData\ thread\ to\ pass\ received\ data\ to\ the\ Router\ for\ the\ router.\ Returns\ a\ \r\n\ HashMap<Connection,Integer>\ that\ the\ thread\ has\ deserialized\ from\ the\ bytes\r\n
 numComments=3

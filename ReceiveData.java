@@ -22,9 +22,8 @@ public class ReceiveData extends Thread{
             DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
             try{
                 r.routerSocket.receive(receivePacket);
-                System.out.println("Obtained packet");
+                //System.out.println("Obtained packet");
                 // out of the receivePacket, must get the DV hashmap and the hasmap length
-                // deserializeDistanceVectorBytes(receivePacket)
                 try{
                     HashMap<Key,Integer> newDV = deserializeDistanceVectorBytes(receivePacket.getData());
                     r.updateDistanceVector(newDV);
@@ -39,13 +38,8 @@ public class ReceiveData extends Thread{
     /**
      * Should be used in the ReceiveData thread to pass received data to the Router for the router. Returns a 
      * HashMap<Connection,Integer> that the thread has deserialized from the bytes
-     * ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
-     * ObjectInputStream in = new ObjectInputStream(byteIn);
-     * Map<Integer, String> data2 = (Map<Integer, String>) in.readObject();
-     * System.out.println(data2.toString());
      */
     public HashMap<Key,Integer> deserializeDistanceVectorBytes(byte[] inputBytes) throws EOFException{
-        //System.out.println("byte array deserialize size " + inputBytes.length);
         HashMap<Key,Integer> newDistanceVector = null;
         try{
             ByteArrayInputStream byteIn = new ByteArrayInputStream(inputBytes);
@@ -53,8 +47,8 @@ public class ReceiveData extends Thread{
             newDistanceVector = (HashMap<Key,Integer>) in.readObject(); //Causing EOF error
             in.close();
             byteIn.close();
-        }catch(Exception ex){ 
-            //ex.printStackTrace();
+        }catch(Exception ex){
+            ex.printStackTrace();
         }
         r.addNeighborsValues(newDistanceVector);
         return newDistanceVector;

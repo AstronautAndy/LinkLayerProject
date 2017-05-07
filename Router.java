@@ -24,14 +24,16 @@ public class Router{
     public Router(String fileName, Boolean router){
         distanceVector = new HashMap<Key,Integer>();
         neighbors = new ArrayList<Connection>();
-        try{
+        try{            
             FileReader fr = new FileReader(fileName); Scanner sc = new Scanner(fr); //Initialize scanner
-            InetAddress thisIp = InetAddress.getByName( sc.next() ); //Skip the first value of the file (the one that just reads "localhost")
+            String i = sc.next();
+            InetAddress thisIp = InetAddress.getByName(i); //Skip the first value of the file (the one that just reads "localhost")
             int thisRouterPort =  sc.nextInt(); //Read the int on the first line of the router text file
             routerSocket = new DatagramSocket(thisRouterPort,thisIp);
             //Add connection to itself to DistanceVector
-            Key thisRouterEntry = new Key(thisIp.toString(),Integer.toString(thisRouterPort));
+            Key thisRouterEntry = new Key(i,Integer.toString(thisRouterPort));
             distanceVector.put(thisRouterEntry,0);
+            //System.out.println(distanceVector.size());
             while( sc.hasNextLine() ){ //For every line of the router.txt file after the first line, create a new socket port
                 Connection newConnection;
                 String ipString = sc.next();
@@ -55,6 +57,8 @@ public class Router{
         for(int i=0; i<threadList.size(); i++){
             threadList.get(i).start();
         }
+        
+        
     }
     
     /**
@@ -64,14 +68,14 @@ public class Router{
      * on the other router.
      */
     public void sendDistanceVector(Connection c){
-        System.out.println("Sending Vector");
+        //System.out.println("Sending Vector");
         byte[] payload;
         try{
             ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(byteOut);
             out.writeObject(distanceVector);
             payload = byteOut.toByteArray();
-            System.out.println("Send DV payload size: " + payload.length);
+            //System.out.println("Send DV payload size: " + payload.length);
             DatagramPacket send = new DatagramPacket(payload,payload.length,c.getIPAddress(),c.getPortNum());
             routerSocket.send(send);
             out.close();
@@ -104,8 +108,8 @@ public class Router{
             while(it.hasNext()){
                 Map.Entry nextEntry = (Map.Entry) it.next();
                 Key check = (Key) nextEntry.getKey();
-                if(distanceVector.containsKey(check) == false ){ //If the router's distance vector doesn't have the current key
-                    System.out.println("Found unknown key: " + check.getIP() + " " + check.getPort());
+                if(distanceVector.containsKey( nextEntry.getKey() ) == false ){ //If the router's distance vector doesn't have the current key
+                    //System.out.println("Found unknown key: " + check.getIP() + " " + check.getPort());
                     Integer j = (Integer) nextEntry.getValue();
                     distanceVector.put(check,j);
                 }
@@ -123,4 +127,23 @@ public class Router{
         // add the values form dv to the routers actual distance vector
         // call updateDistanceVector to update the actual distance vector based on the new values
     }    
+    
+    public void printDistanceVector(){
+        Iterator it = distanceVector.entrySet().iterator();        
+        while(it.hasNext()){
+             Map.Entry nextEntry = (Map.Entry) it.next();
+             Key check = (Key) nextEntry.getKey();
+             System.out.println(check.getIP() + " " + check.getPort() + " " + nextEntry.getValue());
+        }
+    }
+    
+    public void sendMessage(String Ip, int port, String message){
+        try{
+            InetAddress destIp = InetAddress.getByName(Ip);
+            DatagramPacket sendPacket = new DatagramPacket(message.getBytes(),message.getBytes().length,destIp,port);
+            routerSocket.send(sendPacket);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }
