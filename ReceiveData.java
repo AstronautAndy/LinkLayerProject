@@ -18,14 +18,14 @@ public class ReceiveData extends Thread{
 
     public void run(){
         while(true){
-            byte[] receiveData = new byte[1024];
+            byte[] receiveData = new byte[2048];
             DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
             try{
                 r.routerSocket.receive(receivePacket);
                 System.out.println("Obtained packet");
                 // out of the receivePacket, must get the DV hashmap and the hasmap length
                 // deserializeDistanceVectorBytes(receivePacket)
-                HashMap<Connection,Integer> newDV = deserializeDistanceVectorBytes(receivePacket.getData());
+                HashMap<String[],Integer> newDV = deserializeDistanceVectorBytes(receivePacket.getData());
                 r.updateDistanceVector(newDV);
                 // iterate through the receiced DV hashmap, and place the updated distances of the neighbor to other nodes in its own DV
                 // based on new neighbor values, update its own DV
@@ -42,13 +42,13 @@ public class ReceiveData extends Thread{
      * Map<Integer, String> data2 = (Map<Integer, String>) in.readObject();
      * System.out.println(data2.toString());
      */
-    public HashMap<Connection,Integer> deserializeDistanceVectorBytes(byte[] inputBytes){
-        HashMap<Connection,Integer> newDistanceVector = null;
+    public HashMap<String[],Integer> deserializeDistanceVectorBytes(byte[] inputBytes) throws EOFException{
+        HashMap<String[],Integer> newDistanceVector = null;
         try{
             ByteArrayInputStream byteIn = new ByteArrayInputStream(inputBytes);
             ObjectInputStream in = new ObjectInputStream(byteIn);
-            newDistanceVector = (HashMap<Connection,Integer>) in.readObject();
-        }catch(Exception ex){ ex.printStackTrace(); }
+            newDistanceVector = (HashMap<String[],Integer>) in.readObject(); //Causing EOF error
+        }catch(Exception ex){ ex.printStackTrace(); ex.getCause();}
         r.addNeighborsValues(newDistanceVector);
         return newDistanceVector;
     }    
