@@ -23,9 +23,6 @@ public class Router{
     // A HashMap of Key and Integer values. The key applies to a specific IP/port number combination
     HashMap<Key/*destination*/,Integer/*cost to dest.*/> distanceVector;
 
-    // A HashMap of forwarding ports given a packet's destination
-    HashMap<Key/*destination*/,Integer/*port*/> forwardingTable;
-
     // An ArrayList that stores all the direct neighbors of the router
     ArrayList<Key> neighbors;
 
