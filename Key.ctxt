@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=i\ p
 comment0.target=Key(java.lang.String,\ java.lang.String)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Key\r\n
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Key\n
 comment1.params=object
 comment1.target=boolean\ equals(java.lang.Object)
 comment2.params=

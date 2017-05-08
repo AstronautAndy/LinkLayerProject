@@ -5,8 +5,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Key implements java.io.Serializable
-{
+public class Key implements java.io.Serializable{
     private final String IP;
     private final String Port;
 

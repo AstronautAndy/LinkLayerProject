@@ -22,6 +22,7 @@ public class CommandLine extends Thread{
             command = sc.next();
             //System.out.println("Command is: " + command);
             // PRINT - print the current node's distance vector, and the distance vectors received from the neighbors
+            System.out.println();
             if("PRINT".equals(command)){
                 r.printDistanceVector();
             }
@@ -31,7 +32,7 @@ public class CommandLine extends Thread{
                 String tmpPN = sc.next();
                 String msg = sc.next();
                 int port = Integer.parseInt(tmpPN);
-                r.sendMessage(tmpIP,Integer.parseInt(tmpPN),msg); // accessing 5001th connection, not searching for the correct port, not necisarily a neighbor
+                r.sendMessage(tmpIP,Integer.parseInt(tmpPN),msg); 
             }
             // CHANGE <dst-ip> <dst-port> <new-weight> - change the weight between the current node and the specified node to 
             // new-weight and update the specified node about the change
@@ -43,11 +44,11 @@ public class CommandLine extends Thread{
                 Key check = new Key(tmpIP,tmpPN);
                 r.distanceVector.remove(check);
                 r.distanceVector.put(check,Integer.parseInt(tmpWT));
-                //r.updateDistanceVector(???);
             }
             else{
                 System.out.println("Unknown Command: " + command);
             }
+            System.out.println();
         }
     }
 }
